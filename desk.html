@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单标签</title>
+    <style>
+        tr {
+            padding: 20px;
+        }
+
+        td {
+            margin: 50px;
+            padding: 20px;
+        }
+
+        a {
+            size: 50px;
+            align-content: center;
+        }
+
+        form {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<a href="1_HelloWorld.html"><h1>点我免费获取</h1></a>
+<br/>
+<a target="_blank" href="https://www.w3school.com.cn/tags/html_ref_byfunc.asp">
+    <font color="fe0004" size="50">
+        <p align="center">w3c菜鸟文档</p>
+    </font>
+</a>
+<a href="https://mvnrepositor y.com/artifact/mysql/mysql-connector-java">驱动jar包</a>
+<a href="http://www.bootcss.com">bootstrap框架文档</a>
+<a href="https://www.w3school.com.cn/tags/html_ref_eventattributes.asp">html中window的属性</a>
+<table align="center" style="margin: 9px;" border="6">
+    <tr>
+        <td><h1><a href="https://element.eleme.cn/#/zh-CN">vue的组件中文网</a></h1></td>
+        <td><h1><a href="http://www.spring.io">spring框架官网</a></h1></td>
+        <td><h1><a href="https://www.w3school.com.cn">w3c菜鸟文档</a></h1></td>
+    </tr>
+    <tr>
+        <td><h1><a href="http://www.bootcss.com">bootstrap框架</a></h1></td>
+        <td><h1><a href="https://mvnrepository.com/">maven仓库</a></h1></td>
+        <td><h1><a href="https://medtiku.com/">医学题库</a></h1></td>
+    </tr>
+    <tr>
+        <td><h1><a
+                href="https://m.bilibili.com/space/483162496?share_medium=android&share_plat=android&share_source=WEIXIN&share_tag=s_i&timestamp=1650938965&unique_k=2UuHl32">B站英语兔</a>
+        </h1></td>
+        <td><h1><a href="https://www.icourse163.org/home.htm?userId=1433516970#/home/course">我的慕课</a></h1></td>
+
+        <td><h1><a href="https://im.dingtalk.com/">叮叮</a></h1></td>
+
+    </tr>
+    <tr>
+        <td>
+            <h1><a href="http://element-cn.eleme.io/#/zh-CN">ElementUI</a></h1>
+        </td>
+        <td>
+            <h1><a href="https://www.github.com/">GitHub</a></h1>
+        </td>
+
+    </tr>
+</table>
+
+<hr size="30" color="0001ff"/>
+
+<!--下面是正题-->
+<font size="20">
+    <form action="1_HelloWorld.html" method="get">
+        <label for="user">账户</label> <input id="user" placeholder="请输入用户名" type="text" name="user"><br/>
+        <label for="password">密码</label> <input id="password" placeholder="请输入密码" type="password" name="password"><br/>
+        性别<input type="radio" checked="checked" name="gender" value="male">男
+        <input type="radio" name="gender" value="female">女
+        <input type="radio" name="gender" value="alian" id="ilian"><label for="ilian">外星人</label>
+        <br>
+        爱好<input type="checkbox" name="hobby" value="swan">逛街
+        <input type="checkbox" name="hobby" value="java">java
+        <input type="checkbox" name="hobby" checked="checked" value="sleep">睡觉
+        <br>
+        上传黑料<input type="file" name="file"><br/>
+        隐藏域<input type="hidden" name="hidden" value="虽然我这个value值不会被看到，但是我会跟着提交">
+        <input type="button" value="与js结合的按钮"><br/>
+        取色器<input type="color" name="color"><br/>
+        生日<input type="date" name="birthday"><br/>
+        生日<input type="datetime-local" name="birthday"><br/>
+        邮箱<input type="email" name="email"><br/>
+        年龄<input type="number" name="age"><br/>
+        省份<select name="province">
+        <option value="1">河南</option>
+        <option value="2">山东</option>
+        <option value="3" selected>吉林</option>
+    </select><br/>
+        介绍<textarea cols="20" rows="5" name="introducation"></textarea>
+
+
+        <input type="submit" value="提交">
+    </form>
+</font>
+
+<hr color="green">
+<h3><i>注意：</i></h3>
+<ol>
+    <li>表单项中的数据要想被提交，就必须先指定name属性；</li>
+    <li>type属性值改变元素展示样式</li>
+    <li>单选框value表示提交的值</li>
+    <li>checked表示默认会选择此项，不写值也可以</li>
+    <li>placeholder给输入框加提示，如果用value给默认值</li>
+    <li>label 标签的for属性可以和input的id属性对应，会使input获取焦点</li>
+    <li>图片提交按钮，type="image"和src就可以了，没有图片演示</li>
+    <li>下拉列表加入value是因为提交的是汉字会出现url编码，有些浏览器太老的就会编码识别不出来，安全起见，不用汉字</li>
+
+</ol>
+
+
+<hr/>
+<table frame="box">
+    <tr>
+        <th>Month</th>
+        <th>Savings</th>
+    </tr>
+    <tr>
+        <td>January</td>
+        <td>$100</td>
+    </tr>
+</table>
+</body>
+</html>
