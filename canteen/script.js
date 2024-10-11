@@ -25,6 +25,7 @@ function loadMenu(windowName, mealFileName) {
     $.get(mealFileName, function(data) {
         var rows = data.split('\n');
         var table = $('<table></table>');
+        var backgroundColor = '#f9eec7'; // 浅黄色
         $.each(rows, function(index, row) {
             if (row.trim() === '') {
                 // 如果是空行，单独成一个 td
@@ -33,17 +34,20 @@ function loadMenu(windowName, mealFileName) {
                 tr.append(td);
                 table.append(tr);
             } else {
-                // 非空行，分为两列
-                var parts = row.split('，');
-                if (parts.length < 2) {
-                    parts = [row, ''];
+                var parts = row.split(/\s+/);
+                if (parts.length > 1 && /^\d/.test(parts[1])) {
+                    var tr = $('<tr></tr>');
+                    var td1 = $('<td style="background-color:' + backgroundColor + '">' + parts[0] + '</td>');
+                    var td2 = $('<td style="background-color:' + (backgroundColor === '#f9eec7'? '#c7e8f9' : '#f9eec7') + '">' + parts[1] + '</td>');
+                    tr.append(td1);
+                    tr.append(td2);
+                    table.append(tr);
+                } else {
+                    var tr = $('<tr></tr>');
+                    var td = $('<td style="background-color:' + backgroundColor + '">' + row + '</td>');
+                    tr.append(td);
+                    table.append(tr);
                 }
-                var tr = $('<tr></tr>');
-                var td1 = $('<td>' + parts[0] + '</td>');
-                var td2 = $('<td>' + parts[1] + '</td>');
-                tr.append(td1);
-                tr.append(td2);
-                table.append(tr);
             }
         });
         var menuDisplay = $('<div id="menu-display"></div>');
@@ -51,28 +55,30 @@ function loadMenu(windowName, mealFileName) {
         // 添加返回按钮
         var backButton = $('<button>返回</button>');
         backButton.click(function() {
+            // 隐藏当前查看的内容
             $('#menu-display').empty();
+            // 显示窗口列表和底部的提示信息
             $('#window-list').show();
             $('#hello-message').show();
-            // 确保菜单隐藏
-            table.remove();
+            // 隐藏返回按钮
+            $(this).hide();
+            // 不操作音频控件
+            // 恢复其他状态到初始状态
+            $('body').removeClass('viewing-menu');
+            // 确保之前的 table 被隐藏
+            table.hide();
         });
-        // 添加顶部返回查看餐厅窗口按钮
-        var topBackButton = $('<button>返回餐厅窗口</button>');
-        topBackButton.click(function() {
-            $('#menu-display').empty();
-            $('#window-list').show();
-            $('#hello-message').show();
-            // 确保菜单隐藏
-            table.remove();
-        });
-        menuDisplay.prepend(topBackButton);
-        menuDisplay.append(backButton);
+        menuDisplay.prepend(backButton);
         $('#window-list').hide();
         $('#hello-message').hide();
-        $('body').append(menuDisplay);
+        $('body').addClass('viewing-menu').append(menuDisplay);
+
+        // 调整字体大小
+        table.find('td').css('font-size', '24px');
     });
 }
+
+
 let isPlayed = false;
 $(document).on('click touchstart', function (event) {
     if (!isPlayed) {
