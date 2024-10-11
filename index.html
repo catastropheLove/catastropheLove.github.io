@@ -27,17 +27,19 @@
 
 <body>
 
-<a target="_blank"
+<a  target="_blank"
    href="https://qm.qq.com/cgi-bin/qm/qr?k=rR6Rp4FyOj5pXRX7POYRpsEmrfJKw4Lm&jump_from=webapi&authKey=LbG7rpocuiMguVKT4odxx4jL6oRibdoNt+tIe4JaQjsV2SIc971akXHJuR0BEcns"><img
         border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="云朵儿" title="云朵儿"></a>
 
 <br/>
 
 <h3>双击具体窗口可以跳转，跳转之后再双击可以跳回来</h3>
-<audio controls  loop="loop">
-    <source src="file/music01.mp3" type="audio/ogg" >
-    。
+
+
+<audio name="music_top"  controls  loop="loop" >
+    <source src="file/music01.mp3" type="audio/ogg">
 </audio>
+
 <table align="center" style="margin: 9px;" border="6">
 <tr co>
 
@@ -1095,6 +1097,19 @@
 
 
 </table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let isPlayed = false;
+    $(document).on('click touchstart', function (event) {
+        if (!isPlayed) {
+            const audio = $('audio[name="music_top"]')[0];
+            audio.play();
+            isPlayed = true;
+        }
+    });
+</script>
+
 
 </body>
 </html>
